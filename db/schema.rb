@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2020_08_02_041400) do
 
   create_table "games", force: :cascade do |t|
-    t.string "token"
-    t.integer "duration"
+    t.string "token", null: false
+    t.integer "duration", null: false
     t.integer "time_left"
-    t.string "board"
-    t.integer "points"
-    t.string "found_words"
-    t.string "char_map"
+    t.string "board", null: false
+    t.integer "points", null: false
+    t.string "found_words", null: false
+    t.string "char_map", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
