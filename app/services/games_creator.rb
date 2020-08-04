@@ -5,10 +5,10 @@ class GamesCreator
 
   class << self
 
-    def create_game(game_params, params)
-      game = Game.new(game_params)
-      game.time_left = params[:duration]
-      game.board = generate_board(params)
+    def create_game(game_params)
+      game = Game.new({ duration: game_params[:duration] })
+      game.time_left = game_params[:duration]
+      game.board = generate_board(game_params)
       game.token = generate_token
       game.points = 0
       game.found_words = Set.new

@@ -7,18 +7,18 @@ class GamesManager
   class WordAlreadyFoundError < GameError; end
   class WordNotInDictionaryError < GameError; end
   class WordNotOnBoardError < GameError; end
+  class InvalidTokenError < GameError; end
+  class GameExpiredError < GameError; end
 
   class << self
 
-    def update_time_left!(game)
-      game.time_left = [game.duration - (Time.now - game.created_at), 0].max
-    end
-
-    def check_word(word, game)
+    def verify_word(word, game)
       word.upcase!
-      throw WordNotInDictionaryError.new unless @dictionary.include?(word)
-      throw WordAlreadyFoundError.new if game[:found_words].include?(word)
-      throw WordNotOnBoardError unless word_on_board?(game[:board], game[:char_map], word)
+      raise WordNotInDictionaryError, 'Word not in english dictionary!' unless @dictionary.include?(word)
+      raise WordAlreadyFoundError, 'Word already found!' if game[:found_words].include?(word)
+      raise WordNotOnBoardError, 'Word not on board!' unless word_on_board?(game[:board], game[:char_map], word)
+
+      true
     end
 
     def word_on_board?(board, char_map, word)
@@ -74,7 +74,15 @@ class GamesManager
       (index + 1 % 4).zero? ? nil : index + 1
     end
 
-    def initialize
+    def check_game_expired(game)
+      raise GameExpiredError, 'Game has expired. Congrats' if game.expired?
+    end
+
+    def validate_game_token(game, token)
+      raise InvalidTokenError, 'Invalid Token' unless game.valid_token?(token)
+    end
+
+    def init
       arr = IO.readlines('dictionary.txt', chomp: true).map(&:upcase)
       @dictionary = Set.new(arr)
     end
@@ -82,3 +90,5 @@ class GamesManager
   end
 
 end
+
+GamesManager.init
