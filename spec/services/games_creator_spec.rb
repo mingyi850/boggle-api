@@ -4,7 +4,7 @@ describe 'GamesCreator' do
 
   describe 'GamesCreator.create_game' do
     it 'creates a valid game entry' do
-      expect(GamesCreator.create_game({duration: 1000, random: 'true'}).valid?).to be true
+      expect(GamesCreator.create_game({duration: 1000, random: 'true'})).to be_valid
     end
   end
 

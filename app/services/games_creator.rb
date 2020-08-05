@@ -15,6 +15,7 @@ class GamesCreator
       game.points = 0
       game.found_words = Set.new
       game.char_map = get_char_map(game.board)
+      game.save!
       game
     end
 

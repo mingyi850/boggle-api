@@ -192,6 +192,10 @@ The game schema is almost identically as described by the problem statement, wit
 2. The game retains a alternate representation of the board in the form of a char_map.
 This represents a slight tradeoff between space complexity for speed in searching.
 
+### Testing
+I've included rspec unit tests for each component except the controller (which should be tested using
+the integration tests provided). 
+
 ### Conclusion
 I definitely enjoyed building this, and if anything it was a great learning experience.
 I would still like to learn more about design patterns in Rails if given the chance - as well

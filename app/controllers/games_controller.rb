@@ -20,14 +20,10 @@ class GamesController < ApplicationController
 
   def create
     game = GamesCreator.create_game(game_params)
-    if game.save
-      render json: game.as_json(only: %i[id token duration board]), status: :created
-    else
-      render json: {message: 'Error', data: game.errors}, status: :unprocessable_entity
-    end
+    render json: game.as_json(only: %i[id token duration board]), status: :created
   rescue GamesCreator::GameCreationError => e
     if e.instance_of?(GamesCreator::InvalidBoardError)
-      render json: {message: 'Error: Invalid Board Passed', data: params}, status: :bad_request
+      render json: {message: 'Error: Invalid Board Passed'}, status: :bad_request
     end
   end
 
