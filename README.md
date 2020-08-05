@@ -25,7 +25,10 @@ Then, create the database by running
 
 > <code> rails db:migrate </code>
 
-Running rspecs (unit tests):
+### Running rspecs (unit tests):
+Before running rspecs, change the SERVER_URL in the .env file to the
+server location. This defaults to http://localhost:3000 but varies with your
+configuration
 
 > <code> bundle exec rspec spec </code>
 
@@ -33,7 +36,7 @@ Running rspecs (unit tests):
 On a terminal, start by running
 > <code> rails server  </code>
 
-This should start the server on http://localhost:3000
+This should start the server on localhost at on given port (e.g http://localhost:3000)
 
 ## API Use (from problem statement)
 ### Create the game
