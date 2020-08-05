@@ -28,9 +28,13 @@ Then, create the database by running
 ### Running rspecs (unit tests):
 Before running rspecs, change the SERVER_URL in the .env file to the
 server location. This defaults to http://localhost:3000 but varies with your
-configuration
+configuration. 
+
+Once done, run
 
 > <code> bundle exec rspec spec </code>
+
+this should run all tests (including provided integration tests)
 
 ### Initialising the Server
 On a terminal, start by running
