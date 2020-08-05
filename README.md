@@ -12,7 +12,7 @@ basic api.
 Documentation of my thought process can be found below
 
 ## Setup
-###Requirements
+### Requirements
 Ruby version: 2.6
 
 bundle (install using gem install bundle)
@@ -20,14 +20,19 @@ bundle (install using gem install bundle)
 ### Building the Project
 Start by installing dependencies using
 > <code> bundle install </code>
+
 Then, create the database by running
+
 > <code> rails db:migrate </code>
+
 Running rspecs (unit tests):
-> <code> bundle exec rspec spec
+
+> <code> bundle exec rspec spec </code>
 
 ### Initialising the Server
 On a terminal, start by running
 > <code> rails server  </code>
+
 This should start the server on http://localhost:3000
 
 ## API Use (from problem statement)
